@@ -40,6 +40,16 @@ class QuotesEditScreen extends StatelessWidget {
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.download_sharp,color: Colors.black,),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.copy,color: Colors.black,),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.color_lens_outlined,color: Colors.black,),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.edit,color: Colors.black,),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.share,color: Colors.black,),label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.favorite_outline,color: Colors.black,),label: ''),
+          ],
+        ),
       ),
     );
   }
