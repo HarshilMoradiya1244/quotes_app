@@ -22,7 +22,10 @@ class _QuoatesScreenState extends State<QuoatesScreen> {
           "${Global.g1.categoryName}",
           style: TextStyle(fontSize: 20, color: Colors.white),
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.blue.shade400,
+          leading:IconButton(onPressed: (){
+            Navigator.pop(context,'quotes');
+          }, icon: Icon(Icons.arrow_back),color: Colors.white,)
       ),
       body: Scrollbar(
         child: ListView.builder(
@@ -35,7 +38,7 @@ class _QuoatesScreenState extends State<QuoatesScreen> {
               ,child: squareTile(dataList[index]))
         ),
       ),
-    ));
+        ));
   }
 
   Container squareTile( QuotesModel q1) {
@@ -50,8 +53,17 @@ class _QuoatesScreenState extends State<QuoatesScreen> {
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Expanded(child: Text("${q1.quotes}",style:TextStyle(fontWeight: FontWeight.bold),)),
+            Expanded(child: Text("${q1.quotes}",style:TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.center,)),
             Expanded(child: Text("${q1.author}",style:TextStyle(fontWeight: FontWeight.bold),)),
+            Row(
+              children: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.download),color:Colors.white,),
+                IconButton(onPressed: (){}, icon: Icon(Icons.image_search),color: Colors.white,),
+                IconButton(onPressed: (){}, icon: Icon(Icons.color_lens_outlined),color: Colors.white,),
+                IconButton(onPressed: (){}, icon: Icon(Icons.copy),color: Colors.white,),
+                IconButton(onPressed: (){}, icon: Icon(Icons.share),color: Colors.white,),
+              ],
+            )
           ],
         ),
       ),

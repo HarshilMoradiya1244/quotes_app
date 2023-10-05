@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
             " Welcome To Quotes",
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
-          backgroundColor: Colors.teal,
+          backgroundColor: Colors.blue.shade400,
           actions: [
             IconButton(
                 onPressed: () {
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     isGrid = !isGrid;
                   });
                 },
-                icon: Icon(isGrid ? Icons.list : Icons.grid_on)),
+                icon: Icon(isGrid ? Icons.list : Icons.grid_on),color: Colors.white,),
           ],
         ),
         body: isGrid
