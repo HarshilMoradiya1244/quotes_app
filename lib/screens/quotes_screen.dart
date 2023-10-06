@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
 import 'package:quotes_app/model/quotes_model.dart';
 import 'package:quotes_app/utils/global.dart';
 
@@ -53,15 +55,16 @@ class _QuoatesScreenState extends State<QuoatesScreen> {
         padding: const EdgeInsets.all(15),
         child: Column(
           children: [
-            Expanded(child: Text("${q1.quotes}",style:TextStyle(fontWeight: FontWeight.bold),textAlign: TextAlign.center,)),
-            Expanded(child: Text("${q1.author}",style:TextStyle(fontWeight: FontWeight.bold),)),
+            Expanded(child: Text("${q1.quotes}",style:TextStyle(fontWeight: FontWeight.w400,fontFamily:'poppins'),textAlign: TextAlign.center,)),
+            Expanded(child: Text("${q1.author}",style:TextStyle(fontWeight: FontWeight.w200,fontFamily:'poppins'),)),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                IconButton(onPressed: (){}, icon: Icon(Icons.download),color:Colors.white,),
                 IconButton(onPressed: (){}, icon: Icon(Icons.image_search),color: Colors.white,),
                 IconButton(onPressed: (){}, icon: Icon(Icons.color_lens_outlined),color: Colors.white,),
                 IconButton(onPressed: (){}, icon: Icon(Icons.copy),color: Colors.white,),
                 IconButton(onPressed: (){}, icon: Icon(Icons.share),color: Colors.white,),
+                LikeButton(),
               ],
             )
           ],

@@ -35,6 +35,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  google_fonts: ^6.1.0
+  like_button: ^2.0.5
+
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +49,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -87,5 +91,15 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: satisfy
+      fonts:
+        - asset: assets/fonts/satisfy400.ttf
+        - asset: assets/fonts/poppins200.ttf
+          weight: 200
+        - asset: assets/fonts/poppins400.ttf
+          weight: 400
+        - asset: assets/fonts/playfairdisplay400.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
