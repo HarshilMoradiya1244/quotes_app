@@ -24,23 +24,6 @@ List<CategoryModel>categoryList=[
   ];
 
    String? categoryName;
-   List<Color>colors=[
-     Colors.black,
-     Colors.yellow,
-     Colors.brown.shade300,
-     Colors.blue,
-     Colors.pink.shade800,
-     Colors.pink.shade200,
-     Colors.brown.shade300,
-     Colors.pink,
-     Colors.orange.shade400,
-     Colors.green.shade400,
-     Colors.purple.shade400,
-     Colors.red,
-     Colors.pink.shade800,
-     Colors.pink.shade200,
-     Colors.brown.shade300,
-   ];
 
   List<Map>quotesList = [
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:like_button/like_button.dart';
+import 'package:quotes_app/utils/colors.dart';
 import 'package:quotes_app/utils/global.dart';
 
 import '../model/quotes_model.dart';
@@ -20,6 +21,8 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
   bool text = true;
   int i = 0;
   int j = 14;
+  TextAlign txtAlign = TextAlign.center;
+  int colorIndex = 0, fontColor = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -48,41 +51,48 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: (){
-                  setState(() {
-                    i = (i + 1) % Global.g1.colors.length;
-                  });;
+                onTap: () {
+                  setState(
+                    () {
+                      if (colorIndex < colors.length - 1) {
+                        colorIndex++;
+                      } else {
+                        colorIndex = 0;
+                      }
+                    },
+                  );
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.75,
                   width: MediaQuery.of(context).size.width * 0.95,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Global.g1.colors[i],
+                    color: colors[colorIndex],
                   ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         "${model.quotes}",
-                        textAlign: TextAlign.center,
-                        style:TextStyle(
+                        textAlign: txtAlign,
+                        style: TextStyle(
                             fontWeight:
                                 bold ? FontWeight.bold : FontWeight.normal,
                             fontStyle:
                                 italic ? FontStyle.italic : FontStyle.normal,
-                            fontSize: 19,color: Global.g1.colors[j],
-                          fontFamily:text?'satisfy':'playfairdisplay400'
-                        ),
+                            fontSize: 19,
+                            color: colors[fontColor],
+                            fontFamily:
+                                text ? 'satisfy' : 'playfairdisplay400'),
                       ),
                       SizedBox(height: 50),
                       Text(
                         "${model.author}",
-                        textAlign: TextAlign.center,
+                        textAlign: txtAlign,
                         style: GoogleFonts.playfairDisplay(
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                          color:Global.g1.colors[j],
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          color: colors[colorIndex],
                         ),
                       )
                     ],
@@ -98,80 +108,120 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.download_outlined,
-                            color: Colors.black,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.download_outlined,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              Clipboard.setData(
-                                  ClipboardData(text: "${model.quotes}"));
-                            });
-                          },
-                          icon: Icon(
-                            Icons.copy,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                Clipboard.setData(
+                                    ClipboardData(text: "${model.quotes}"));
+                              });
+                            },
+                            icon: Icon(
+                              Icons.copy,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              j = (j - 1) % Global.g1.colors.length;
-                            });
-                          },
-                          icon: Icon(
-                            Icons.color_lens_outlined,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                if (fontColor < colors.length - 1) {
+                                  fontColor++;
+                                } else {
+                                  fontColor = 0;
+                                }
+                              });
+                            },
+                            icon: Icon(
+                              Icons.color_lens_outlined,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              bold = !bold;
-                            });
-                          },
-                          icon: Icon(
-                            Icons.format_bold,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                bold = !bold;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.format_bold,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              italic = !italic;
-                            });
-                          },
-                          icon: Icon(
-                            Icons.format_italic,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                italic = !italic;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.format_italic,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            setState(() {
-                              text = !text;
-                            });
-                          },
-                          icon: Icon(
-                            Icons.text_format,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                text = !text;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.text_format,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.share,
-                            color: Colors.black,
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.share,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                      ],
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                txtAlign = TextAlign.left;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.format_align_left_outlined,
+                              color: Colors.black,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                txtAlign = TextAlign.center;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.format_align_center_outlined,
+                              color: Colors.black,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              setState(() {
+                                txtAlign = TextAlign.right;
+                              });
+                            },
+                            icon: Icon(
+                              Icons.format_align_right_outlined,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
