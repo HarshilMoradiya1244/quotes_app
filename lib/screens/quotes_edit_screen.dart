@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:like_button/like_button.dart';
 import 'package:quotes_app/utils/colors.dart';
-import 'package:quotes_app/utils/global.dart';
 import 'package:quotes_app/utils/img_list.dart';
 
 import '../model/quotes_model.dart';
@@ -22,7 +19,8 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
   bool text = true;
   TextAlign txtAlign = TextAlign.center;
   int colorIndex = 0, fontColor = 0;
-  int image = 0;
+  int image = 0 , fontstyle = 0;
+  bool visibale = true;
 
   @override
   Widget build(BuildContext context) {
@@ -50,65 +48,73 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: () {
-                  setState(
-                    () {
+              Stack(alignment: Alignment.center,
+                  children: [
+                InkWell(
+                  onTap: (){
+                    setState(() {
                       if (colorIndex < colors.length - 1) {
                         colorIndex++;
                       } else {
                         colorIndex = 0;
                       }
-                    },
-                  );
-                },
-                child: Stack(children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.55,
+                    });
+                  },
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.45,
                     width: MediaQuery.of(context).size.width * 0.95,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
                       color: colors[colorIndex],
-                      image:DecorationImage(image:AssetImage("assets/images/bg/${imgList[image]}"),fit: BoxFit.cover)
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "${model.quotes}",
-                          textAlign: txtAlign,
-                          style: TextStyle(
-                              fontWeight:
-                                  bold ? FontWeight.bold : FontWeight.normal,
-                              fontStyle:
-                                  italic ? FontStyle.italic : FontStyle.normal,
-                              fontSize: 19,
-                              color: colors[fontColor],
-                              fontFamily:
-                                  text ? 'satisfy' : 'playfairdisplay400'),
-                        ),
-                        SizedBox(height: 50),
-                        Text(
-                          "${model.author}",
-                          textAlign: txtAlign,
-                          style: GoogleFonts.playfairDisplay(
-                            fontWeight: FontWeight.bold,
-                            fontStyle: FontStyle.italic,
-                            color: colors[fontColor],
-                          ),
-                        )
-                      ],
-                    ),
+                    child:Visibility(
+                        visible:visibale,
+                        child: InkWell(
+                          onTap:() {
+                            setState(() {
+                              visibale=false;
+                            });
+                          },
+                            child: Image.asset("assets/images/bg/${imgList[image]}",fit: BoxFit.cover)))
                   ),
-                ]),
-              ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${model.quotes}",
+                      textAlign: txtAlign,
+                      style: TextStyle(
+                          fontWeight:
+                          bold ? FontWeight.bold : FontWeight.normal,
+                          fontStyle:
+                          italic ? FontStyle.italic : FontStyle.normal,
+                          fontSize: 19,
+                          color: colors[fontColor],
+                          fontFamily:fontList[fontstyle],
+                          ),
+                    ),
+                    SizedBox(height: 50),
+                    Text(
+                      "${model.author}",
+                      textAlign: txtAlign,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        fontFamily:fontList[fontstyle],
+                        color: colors[fontColor],
+                      ),
+                    )
+                  ],
+                ),
+              ]),
               Spacer(),
               Stack(
                 children: [
                   Column(
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.30,
+                        height: MediaQuery.of(context).size.height * 0.40,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -239,13 +245,14 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                                   return Container(
                                       margin: EdgeInsets.all(5),
                                       height:
-                                          MediaQuery.of(context).size.height *
-                                              0.2,
+                                      MediaQuery.of(context).size.height *
+                                          0.2,
                                       width: MediaQuery.of(context).size.width *
                                           0.2,
                                       child: InkWell(
                                           onTap: () {
                                             setState(() {
+                                              visibale=true;
                                               image = index;
                                             });
                                           },
@@ -254,6 +261,26 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                                             fit: BoxFit.cover,
                                           )));
                                 },
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                height: 100,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: fontList.length,
+                                  itemExtent: 100,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return InkWell(
+                                      onTap: (){
+                                        setState(() {
+                                          fontstyle=index;
+                                        });
+                                      },child:Text("Hello",style:TextStyle(fontFamily:"${fontList[index]}"),),
+                                    );
+                                  },
+                                ),
                               ),
                             )
                           ],

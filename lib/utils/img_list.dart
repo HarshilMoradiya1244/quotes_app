@@ -10,3 +10,9 @@ List imgList=[
 "imag7.jpg",
 "imag8.jpg",
 ];
+
+List<String>fontList=[
+  "satisfy400.ttf",
+  "poppins200.ttf",
+  "poppins400.ttf",
+];
