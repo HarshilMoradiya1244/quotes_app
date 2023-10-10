@@ -28,20 +28,6 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
         ModalRoute.of(context)!.settings.arguments as QuotesModel;
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-            centerTitle: true,
-            title: Text(
-              "Welcome To Edit",
-              style: TextStyle(fontSize: 20, color: Colors.white),
-            ),
-            backgroundColor: Colors.blue.shade400,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context, 'quotes');
-              },
-              icon: Icon(Icons.arrow_back),
-              color: Colors.white,
-            )),
         backgroundColor: Colors.grey.shade400,
         body: Padding(
           padding: const EdgeInsets.all(10),
@@ -61,7 +47,7 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                     });
                   },
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.45,
+                    height: MediaQuery.of(context).size.height * 0.55,
                     width: MediaQuery.of(context).size.width * 0.95,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
@@ -114,7 +100,7 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                   Column(
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height * 0.40,
+                        height: MediaQuery.of(context).size.height * 0.30,
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -263,10 +249,11 @@ class _QuotesEditScreenState extends State<QuotesEditScreen> {
                                 },
                               ),
                             ),
+                            SizedBox(height: 20),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: SizedBox(
-                                height: 100,
+                                height: 50,
                                 child: ListView.builder(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: fontList.length,

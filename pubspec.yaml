@@ -96,11 +96,38 @@ flutter:
     - family: satisfy
       fonts:
         - asset: assets/fonts/satisfy400.ttf
+
+    - family: poppins
+      fonts:
         - asset: assets/fonts/poppins200.ttf
-          weight: 200
         - asset: assets/fonts/poppins400.ttf
-          weight: 400
-        - asset: assets/fonts/playfairdisplay400.ttf
+
+    - family: dancingscript
+      fonts:
+        - asset: assets/fonts/dancingscript500.ttf
+        - asset: assets/fonts/dancingscript600.ttf
+
+    - family: kalam
+      fonts:
+        - asset: assets/fonts/kalam300.ttf
+
+    - family: philosopher
+      fonts:
+        - asset: assets/fonts/philosopher400.ttf
+        - asset: assets/fonts/philosopherregular400.ttf
+
+    - family: bigshoulder
+      fonts:
+        - asset: assets/fonts/bigshouldersstencildisplay100.ttf
+
+    - family: hindi
+      fonts:
+        - asset: assets/fonts/hindi400.ttf
+
+    - family: gujrati
+      fonts:
+        - asset: assets/fonts/gujrati100.ttf
+        - asset: assets/fonts/gujrati400.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

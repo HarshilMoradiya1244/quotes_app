@@ -12,7 +12,12 @@ List imgList=[
 ];
 
 List<String>fontList=[
-  "satisfy400.ttf",
-  "poppins200.ttf",
-  "poppins400.ttf",
+  "poppins",
+  "satisfy",
+  "dancingscript",
+  "kalam",
+  "philosopher",
+  "bigshoulder",
+  "hindi",
+  "gujrati",
 ];
